@@ -17,6 +17,7 @@ namespace api_avaliaae.Controllers
 
 
         [HttpGet]
+        [Route("getAllInstitution")]
         public async Task<ActionResult<List<InstitutionModel>>> getAllInstitution()
         {
             var result = await _institutionRepository.getAllInstitutionsWithType();
