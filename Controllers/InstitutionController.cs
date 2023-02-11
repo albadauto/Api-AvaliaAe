@@ -1,5 +1,6 @@
 ﻿using api_avaliaae.Models;
 using api_avaliaae.Repository.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,7 +16,7 @@ namespace api_avaliaae.Controllers
             _institutionRepository = repository;
         }
 
-
+        [Authorize]
         [HttpGet]
         [Route("getAllInstitution")]
         public async Task<ActionResult<List<InstitutionModel>>> getAllInstitution()
