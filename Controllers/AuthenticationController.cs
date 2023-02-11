@@ -15,7 +15,7 @@ namespace api_avaliaae.Controllers
         public ActionResult Authenticate()
         {
             var token = TokenService.GenerateToken();
-            return Ok(token);
+            return Ok(new { token = token, success = true });
         }
     }
 }

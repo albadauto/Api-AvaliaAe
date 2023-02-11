@@ -17,8 +17,6 @@ namespace api_avaliaae.Data.Map
             builder.Property(x => x.District).IsRequired().HasMaxLength(128);
             builder.Property(x => x.Phone).IsRequired().HasMaxLength(128);
             builder.Property(x => x.Cep).IsRequired().HasMaxLength(128);
-
-
         }
     }
 }

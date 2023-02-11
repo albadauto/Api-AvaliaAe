@@ -8,18 +8,20 @@ namespace api_avaliaae.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController : ControllerBase
+    public class AvaliationController : ControllerBase
     {
-        private readonly IUserRepository _repository;
-        public UserController(IUserRepository repository)
+        private readonly IAvaliationRepository _repository;
+        public AvaliationController(IAvaliationRepository repository)
         {
             _repository = repository;
         }
-        [HttpGet]
+
         [Authorize]
-        public async Task<ActionResult<List<UserModel>>> getAllUsers()
+        [HttpGet]
+        [Route("GetAvaliations")]
+        public async Task<ActionResult<List<AvaliationModel>>> GetAvaliations()
         {
-            var result = await _repository.getAllUsers();
+            var result = await _repository.getAllAvaliations();
             return Ok(result);
         }
     }

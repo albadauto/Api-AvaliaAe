@@ -9,21 +9,21 @@ namespace api_avaliaae.Services
     {
         public static string GenerateToken()
         {
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(Settings.Secret);
-            var tokenDescriptor = new SecurityTokenDescriptor
+            var tokenHandler = new JwtSecurityTokenHandler(); // Instancia um objeto do tipo JwtSecurityTokenHandler, uma classe que cria e valida tokens
+            var key = Encoding.ASCII.GetBytes(Settings.Secret); //Cria um key com o secret configurado
+            var tokenDescriptor = new SecurityTokenDescriptor //Cria a estrutura do token
             {
-                Subject = new System.Security.Claims.ClaimsIdentity(new Claim[]
+                Subject = new System.Security.Claims.ClaimsIdentity(new Claim[] //Claims são pequenas informações dentro da chave
                 {
                     new Claim(ClaimTypes.Name, "teste"),
                     new Claim(ClaimTypes.Role, "teste2"),
                 }),
-                Expires = DateTime.UtcNow.AddHours(2),
-                SigningCredentials = new SigningCredentials(
+                Expires = DateTime.UtcNow.AddHours(2), //Quando vai experiar
+                SigningCredentials = new SigningCredentials( 
                     new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-            return tokenHandler.WriteToken(token);
+            var token = tokenHandler.CreateToken(tokenDescriptor); //Cria o token de acordo com a descrição do token
+            return tokenHandler.WriteToken(token); //Escreve o token
 
         }
     }

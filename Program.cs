@@ -20,8 +20,11 @@ builder.Services.AddEntityFrameworkSqlServer()
     .AddDbContext<DatabaseContext>(o => o.UseSqlServer(builder.Configuration.GetConnectionString("Database")));
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IInstitutionRepository, InstitutionRepository>();
+builder.Services.AddScoped<IAvaliationRepository, AvaliationRepository>();
+
 builder.Services.AddCors();
 var key = Encoding.ASCII.GetBytes(Settings.Secret);
+//Adiciona um autenticação
 builder.Services.AddAuthentication(x =>
 {
     x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -38,7 +41,7 @@ builder.Services.AddAuthentication(x =>
         ValidateIssuer = false,
         ValidateAudience = false,
     };
-});
+});//Configura o JWT bearer
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -49,9 +52,10 @@ if (app.Environment.IsDevelopment())
 }
 app.UseCors(x => x.AllowAnyOrigin()
             .AllowAnyMethod()
-            .AllowAnyHeader());
+            .AllowAnyHeader()); //Cors => Regra de cabeçalho para que não exista ataques e que ninguém sem permissão possa executar ataque XSS
+
 app.UseHttpsRedirection();
-app.UseAuthentication();
+app.UseAuthentication(); //Usa a autenticação
 app.UseAuthorization();
 
 app.MapControllers();
