@@ -14,13 +14,11 @@ namespace api_avaliaae.Data
         public DbSet<InstitutionModel> Institution { get; set; }
         public DbSet<InstitutionTypeModel> InstitutionType { get; set; }
         public DbSet<AvaliationModel> Avaliations { get; set; }
+        public DbSet<ApiLoginModel> ApiLogin { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new UserMap());
-            modelBuilder.ApplyConfiguration(new InstitutionMap());
-            modelBuilder.ApplyConfiguration(new InstitutionTypeMap());
-            modelBuilder.ApplyConfiguration(new AvaliationMap());
+            modelBuilder.ApplyConfiguration(new ApiLoginMap());
 
             base.OnModelCreating(modelBuilder);
         }
