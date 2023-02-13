@@ -16,7 +16,7 @@ namespace api_avaliaae.Controllers
             _repository = repository;
         }
 
-        //Irá pegar todas as avaliações
+        //<description>Irá pegar todas as avaliações
         [Authorize]
         [HttpGet]
         [Route("GetAvaliations")]
