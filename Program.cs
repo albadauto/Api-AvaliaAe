@@ -19,6 +19,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddEntityFrameworkSqlServer()
     .AddDbContext<DatabaseContext>(o => o.UseSqlServer(builder.Configuration.GetConnectionString("Database")));
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IApiLoginRepository, ApiLoginRepository>();
 builder.Services.AddScoped<IInstitutionRepository, InstitutionRepository>();
 builder.Services.AddScoped<IAvaliationRepository, AvaliationRepository>();
 
