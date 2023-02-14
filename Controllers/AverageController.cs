@@ -31,5 +31,21 @@ namespace api_avaliaae.Controllers
                 return NotFound(new { success = false, message = "No data found" });
             }
         }
+
+        [Authorize]
+        [HttpGet]
+        [Route("GetAllAveragesWithInstitution")]
+        public async Task<ActionResult<List<AverageModel>>> GetAllAveragesWithInstitution()
+        {
+            var result = await _repository.GetAveragesByInstitution();
+            if(result != null)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return NotFound(new { success = false, message = "No data found"});
+            }
+        }
     }
 }

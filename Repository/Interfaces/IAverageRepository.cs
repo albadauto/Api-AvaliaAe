@@ -5,5 +5,6 @@ namespace api_avaliaae.Repository.Interfaces
     public interface IAverageRepository
     {
         Task<List<AverageModel>> GetAllAverages();
+        Task<List<AverageModel>> GetAveragesByInstitution();
     }
 }
