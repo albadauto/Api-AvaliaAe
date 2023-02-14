@@ -24,5 +24,15 @@ namespace api_avaliaae.Controllers
             var result = await _institutionRepository.getAllInstitutionsWithType();
             return Ok(result);
         }
+
+        [Authorize]
+        [HttpGet]
+        [Route("GetInstitutionById")]
+        public async Task<ActionResult<InstitutionModel>> GetInstitutionById(int id)
+        {
+            var result = await _institutionRepository.GetInstitutionById(id);
+
+            return result != null ? Ok(result) : NotFound(new { message = "No data found", success = false});
+        }
     }
 }

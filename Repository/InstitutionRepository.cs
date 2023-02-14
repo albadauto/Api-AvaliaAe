@@ -40,5 +40,11 @@ namespace api_avaliaae.Repository
 
             return await Task.FromResult(inst);
         }
+
+        public Task<InstitutionModel> GetInstitutionById(int id)
+        {
+            var result = _context.Institution.FirstOrDefault(x => x.Id == id);
+            return Task.FromResult(result);
+        }
     }
 }

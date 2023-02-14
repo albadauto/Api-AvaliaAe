@@ -17,6 +17,7 @@ namespace api_avaliaae.Controllers
         }
         [HttpGet]
         [Authorize]
+        [Route("getAllUsers")]
         public async Task<ActionResult<List<UserModel>>> getAllUsers()
         {
             var result = await _repository.getAllUsers();
