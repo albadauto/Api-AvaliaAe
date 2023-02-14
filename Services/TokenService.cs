@@ -15,8 +15,8 @@ namespace api_avaliaae.Services
             {
                 Subject = new System.Security.Claims.ClaimsIdentity(new Claim[] //Claims são pequenas informações dentro da chave
                 {
-                    new Claim(ClaimTypes.Name, "teste"),
-                    new Claim(ClaimTypes.Role, "teste2"),
+                    new Claim(ClaimTypes.Name, "jsonwebtoken_avaliaae"),
+                    new Claim(ClaimTypes.Role, "main"),
                 }),
                 Expires = DateTime.UtcNow.AddHours(2), //Quando vai experiar
                 SigningCredentials = new SigningCredentials( 
