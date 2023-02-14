@@ -15,6 +15,7 @@ namespace api_avaliaae.Data
         public DbSet<InstitutionTypeModel> InstitutionType { get; set; }
         public DbSet<AvaliationModel> Avaliations { get; set; }
         public DbSet<ApiLoginModel> ApiLogin { get; set; }
+        public DbSet<AverageModel> Average { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

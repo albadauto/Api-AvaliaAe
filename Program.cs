@@ -25,6 +25,7 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IApiLoginRepository, ApiLoginRepository>();
 builder.Services.AddScoped<IInstitutionRepository, InstitutionRepository>();
 builder.Services.AddScoped<IAvaliationRepository, AvaliationRepository>();
+builder.Services.AddScoped<IAverageRepository, AverageRepository>();
 
 builder.Services.AddCors();
 var key = Encoding.ASCII.GetBytes(Settings.Secret);
