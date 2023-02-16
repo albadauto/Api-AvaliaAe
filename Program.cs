@@ -9,7 +9,8 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
-
+string version = builder.Configuration.GetValue<string>("Version");
+string title = $"Api Avalia Aê! By: {builder.Configuration.GetValue<string>("Credits:Developer")} & {builder.Configuration.GetValue<string>("Credits:DevOps")}";
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -17,7 +18,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Api Avalia Aê!", Version = "VE12022301" });
+    c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = title, Version = version });
 });
 builder.Services.AddEntityFrameworkSqlServer()
     .AddDbContext<DatabaseContext>(o => o.UseSqlServer(builder.Configuration.GetConnectionString("Database")));
