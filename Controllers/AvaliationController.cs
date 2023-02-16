@@ -24,5 +24,14 @@ namespace api_avaliaae.Controllers
             var result = await _repository.getAllAvaliations();
             return Ok(result);
         }
+
+        [Authorize]
+        [HttpGet]
+        [Route("GetAvaliationByUserId")]
+        public async Task<ActionResult<List<AvaliationModel>>> GetAvaliationByUserId(int Id)
+        {
+            var result = await _repository.GetAvaliationByUserId(Id);
+            return result != null ? Ok(result) : NotFound(new { message = "No data found", success = false});
+        }
     }
 }
